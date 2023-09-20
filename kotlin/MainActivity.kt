@@ -40,6 +40,11 @@ class MainActivity : AppCompatActivity() {
 
            startActivity(Intent.createChooser(intent, "Share to: "))
         }
+
+        binding.buttonRecycleView.setOnClickListener { // Demo button for recycler view
+           val intent = Intent(this, HobbiesActivity::class.java)
+           startActivity(intent)
+       }
     }
 }
 
