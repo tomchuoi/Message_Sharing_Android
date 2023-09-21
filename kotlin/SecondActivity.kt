@@ -15,13 +15,10 @@ class SecondActivity: AppCompatActivity() {
         setContentView(secondView)
 
         val bundle: Bundle? = intent.extras
-        val msg = bundle!!.getString("user_message")
-
-        Toast.makeText(this, "Message sent!", Toast.LENGTH_SHORT).show()
-
-        binding.displayUserMessage.text = msg
-
-
-
+        bundle?.let{
+            val msg = bundle!!.getString("user_message")
+            showMessage("Message sent!")
+            binding.displayUserMessage.text = msg
+        }
     }
 }
