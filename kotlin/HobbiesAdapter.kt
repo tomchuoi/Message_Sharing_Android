@@ -9,7 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 
 class HobbiesAdapter(val context: Context, val hobbies: List<Hobby>): RecyclerView.Adapter<HobbiesAdapter.ViewHolder>() {
     inner class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
-        private val txvTitle: TextView = itemView.findViewById(R.id.txvTitle) // Initialize txvTitle
+        private var current_hobby: Hobby? = null
+        private var current_position: Int = 0
+
+        init {
+            itemView.findViewById<ImageView>(R.id.imgShare).setOnClickListener{
+                // Safe call using ?.let{}
+                current_hobby?.let {
+                    val intent = Intent()
+                    val message: String = "My hobby is" + current_hobby!!.title
+
+                    intent.action = Intent.ACTION_SEND
+                    intent.putExtra(Intent.EXTRA_TEXT, message)
+                    intent.type = "plain/text"
+
+                    context.startActivity(Intent.createChooser(intent, "Share to: "))
+                }
+            }
+        }
         
         fun setData(hobby: Hobby?, pos: Int) {
             hobby?.let {
