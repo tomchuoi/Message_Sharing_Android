@@ -10,6 +10,10 @@ class HobbiesActivity: AppCompatActivity() {
     private lateinit var binding: HobbyLayoutBinding
     private lateinit var recyclerView: RecyclerView
 
+    companion object {
+        val TAG: String = HobbiesActivity::class.java.simpleName
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = HobbyLayoutBinding.inflate(layoutInflater)
