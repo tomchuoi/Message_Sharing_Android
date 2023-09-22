@@ -20,7 +20,7 @@ class SecondActivity: AppCompatActivity() {
 
         val bundle: Bundle? = intent.extras
         bundle?.let{
-            val msg = bundle!!.getString("user_message")
+            val msg = bundle!!.getString(Constants.USER_MSG_KEY)
             showMessage("Message sent!")
             binding.displayUserMessage.text = msg
         }
