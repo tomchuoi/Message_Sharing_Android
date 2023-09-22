@@ -8,6 +8,10 @@ import com.luckyshrine.messagesharing.databinding.Activity2LayoutBinding
 
 class SecondActivity: AppCompatActivity() {
     private  lateinit var binding: Activity2LayoutBinding
+
+    companion object {
+        val TAG: String = SecondActivity::class.java.simpleName
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = Activity2LayoutBinding.inflate(layoutInflater)
