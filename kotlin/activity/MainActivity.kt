@@ -10,6 +10,11 @@ import com.luckyshrine.messagesharing.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+
+    companion object {
+        val TAG: String = MainActivity::class.java.simpleName
+    }
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -17,16 +22,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.button.setOnClickListener {
-            Log.i("MainActivity", "Button was clicked!") // Appears only to the developer
-            Toast.makeText(this@MainActivity, "Button was clicked", Toast.LENGTH_SHORT).show()
-
+            Log.i(TAG, "Button was clicked!") // Appears only to the developer
         }
 
         binding.buttonSendMsg.setOnClickListener{// After clicking this button, it will connect to second activity
             val message: String = binding.editUserMessage.text.toString()
             val intent = Intent(this, SecondActivity::class.java)
 
-            intent.putExtra("user_message", message)
+            intent.putExtra(Constants.USER_MSG_KEY, message)
             startActivity(intent)
         }
 
