@@ -35,6 +35,10 @@ class HobbiesAdapter(val context: Context, val hobbies: List<Hobby>): RecyclerVi
         }
     }
 
+    companion object {
+        val TAG: String = HobbiesAdapter::class.java.simpleName
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder { // Creating view holder items
         val view = LayoutInflater.from(context).inflate(R.layout.list_layout, parent, false) // Return list_layout as a view
         return ViewHolder(view)
